@@ -5,6 +5,7 @@ void candidate();
 void voter();
 void vote();
 
+void notepar();
 void loadpar();
 
 int m=0,m1;
@@ -15,7 +16,7 @@ int cc=0,cp=0;//array zone
 int p=0,px;//temp party zone
 int c=0,cx,cy;//temp candidate zone
 char *ap[10]={"jvp","unp","wer","besic"};//temp
-char cn[30],pn[30];
+char cn[30],pn[25];
 
 int main(){
 
@@ -43,7 +44,7 @@ scanf("%d",&v);
 if (v<4 && v>0);{
  if(v==1){
     loadpar();
- printf("\nSelect the party :");
+ printf("\n\nSelect the party :");
  scanf("%d",&pa);
 for(int v2=1;v2<=5;v2++){//5 wenuwata candidate list
 if (v2==pa){
@@ -69,7 +70,7 @@ else{
 if(v==2){
 while (v5<4){
     loadpar ();
- printf("\nSelect the party %d:",v5);
+ printf("\n\nSelect the party %d:",v5);
  scanf("%d",&pa);
  for(int v2=1;v2<=5;v2++){//5 wenuwata candidate list
 if (v2==pa){
@@ -111,10 +112,10 @@ while (p<1)   {//need be update
                 scanf("%d",&px);
                 if (px>0 && px<3) {
                 if (px==1){
-                printf("\n1. Enter party name \t:");
-                scanf("%ls",pn);
+                notepar();
                 cp++;
-                printf("\nCandidate ID = %s %d \n\nSuccessful\n------------------\n\n",ap[cp],cp);}
+                printf("\nCandidate ID = %s %d \n\nSuccessful\n------------------\n\n",ap[cp],cp);
+                }
                 else if (px==2){
                     p++;
                 }
@@ -126,6 +127,22 @@ while (p<1)   {//need be update
                                 p--;
                             }
 
+void notepar(){
+    //char ch[25];
+    
+    printf("\n1. Enter party name \t:");
+    scanf(" %s",pn);
+    FILE *can;
+    can=fopen("par.txt","a");
+    if(can==NULL){
+        printf("try again");    }
+    else{
+        fprintf(can," %s_",pn);
+    }
+        printf("\n success");
+        fclose(can);
+}
+
 void loadpar(){
     char ch[25];
     FILE *par;
@@ -136,12 +153,17 @@ void loadpar(){
         printf("try again");    }
     else{
         char ch;
+        int cx=0;
+        printf("\n====party list & code====\n\n");
     while ((ch = fgetc(par)) != EOF) {
         printf("%c",ch);
         if (ch=='_')
         {
-            printf("\b\t");
+            cx++;
+            printf("\b-%d\t",cx);
+            
         }
+        
         
     }
 fclose(par);
