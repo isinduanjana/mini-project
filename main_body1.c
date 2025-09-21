@@ -25,7 +25,7 @@ while(m<2){
     scanf("%d",&m1);
 if (m1>0 && m1<6){
 switch(m1){
-   //case 1: party(); continue;
+   case 1: party(); continue;
    //case 2: candidate(); continue;
    //case 3: voter(); continue;
    case 4: vote(); continue;
@@ -105,6 +105,27 @@ if (v==3)
 }
 }
 }
+void party(){
+while (p<1)   {//need be update
+                printf("1. Add \n2. Exit \nSelect ");
+                scanf("%d",&px);
+                if (px>0 && px<3) {
+                if (px==1){
+                printf("\n1. Enter party name \t:");
+                scanf("%ls",pn);
+                cp++;
+                printf("\nCandidate ID = %s %d \n\nSuccessful\n------------------\n\n",ap[cp],cp);}
+                else if (px==2){
+                    p++;
+                }
+
+                }
+                else {
+                printf("Enter valid number\n");}
+                                }
+                                p--;
+                            }
+
 void loadpar(){
     char ch[25];
     FILE *par;
