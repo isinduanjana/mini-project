@@ -4,7 +4,10 @@ void party();
 void candidate();
 void voter();
 void vote();
+<<<<<<< HEAD
 void loadpar();
+=======
+>>>>>>> 1d0bd6f16bebe86baffcf2d6807e1ecb8aaaf19c
 
 int m=0,m1;
 //int ap[25]={0,1,2,3,4,5,6,7,8,9,10};
@@ -41,6 +44,7 @@ int v,v1=0,v3,v5=1,pa,ca;
 while (v1<1){
 printf("\n1. Vote \n2. Post three preferences\n3. back\n\nwhat is your choice:");
 scanf("%d",&v);
+<<<<<<< HEAD
 
 if (v<4 && v>0);{
  if(v==1){
@@ -48,6 +52,12 @@ if (v<4 && v>0);{
  printf("\nSelect the party :");
  
  
+=======
+//*
+if (v<4 && v>0);{
+ if(v==1){
+ printf("\nSelect the party :");
+>>>>>>> 1d0bd6f16bebe86baffcf2d6807e1ecb8aaaf19c
  scanf("%d",&pa);
 for(int v2=1;v2<=5;v2++){//5 wenuwata candidate list
 if (v2==pa){
@@ -108,6 +118,7 @@ else{
     continue;}
 
 }
+<<<<<<< HEAD
 }
 }
 void loadpar(){
@@ -133,3 +144,9 @@ fclose(par);
 
     }
 }
+=======
+
+
+}
+}
+>>>>>>> 1d0bd6f16bebe86baffcf2d6807e1ecb8aaaf19c
