@@ -15,7 +15,7 @@ int a,vo,v,r;
 int cc=0,cp=0;//array zone
 int p=0,px;//temp party zone
 int c=0,cx,cy;//temp candidate zone
-char *ap[10]={"jvp","unp","wer","besic"};//temp
+
 char cn[30],pn[25];
 
 int main(){
@@ -113,8 +113,8 @@ while (p<1)   {//need be update
                 if (px>0 && px<3) {
                 if (px==1){
                 notepar();
+                
                 cp++;
-                printf("\nCandidate ID = %s %d \n\nSuccessful\n------------------\n\n",ap[cp],cp);
                 }
                 else if (px==2){
                     p++;
@@ -137,9 +137,11 @@ void notepar(){
     if(can==NULL){
         printf("try again");    }
     else{
-        fprintf(can," %s_",pn);
+        fprintf(can,"%d. %s_",cp,pn);
     }
-        printf("\n success");
+    
+        printf("\nCandidate ID = %s %d \n\nSuccessful\n------------------\n\n",pn,cp);
+       // printf("\n success");
         fclose(can);
 }
 
@@ -153,14 +155,13 @@ void loadpar(){
         printf("try again");    }
     else{
         char ch;
-        int cx=0;
+        
         printf("\n====party list & code====\n\n");
     while ((ch = fgetc(par)) != EOF) {
         printf("%c",ch);
         if (ch=='_')
         {
-            cx++;
-            printf("\b-%d\t",cx);
+            printf("\b\t");
             
         }
         
