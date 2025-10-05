@@ -27,7 +27,7 @@ while(m<2){
 if (m1>0 && m1<6){
 switch(m1){
    case 1: party(); continue;
-   //case 2: candidate(); continue;
+   case 2: candidate(); continue;
    //case 3: voter(); continue;
    case 4: vote(); continue;
 }
@@ -171,3 +171,28 @@ fclose(par);
 
     }
 }
+void candidate(){
+                while (c<1)   {
+                printf("1. Add \n2. Exit \nSelect ");
+                scanf("%d",&cx);
+                if (cx>0 && cx<3) {
+                if (cx==1){
+                loadpar();
+                printf("\n1.Enter the code Party of candidate   \t:");
+                scanf("%d",&cy);                                
+                printf("\n2. Enter candidate name \t:");
+                scanf("%s",cn);
+
+                cc++;
+                printf("success");
+                //printf("\nCandidate ID = %s %d \n\nSuccessful\n------------------\n\n",ap[cy],ac[cc]);}//pa tempory                //save in document
+                }else if (cx==2){
+                    c++;
+                }
+
+                }
+                else {
+                printf("Enter valid number\n");}
+                                }
+                                c--;
+                            }
