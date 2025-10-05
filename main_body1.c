@@ -7,6 +7,7 @@ void vote();
 
 void notepar();
 void loadpar();
+void loadcan();
 
 int m=0,m1;
 //int ap[25]={0,1,2,3,4,5,6,7,8,9,10};
@@ -174,10 +175,12 @@ fclose(par);
 }
 void candidate(){
                 while (c<1)   {
-                printf("1. Add \n2. Exit \nSelect ");
+                printf("1. Add \n2. Exit \n3. Show list\nSelect ");
                 scanf("%d",&cx);
-                if (cx>0 && cx<3) {
-                if (cx==1){
+                if (cx>0 && cx<4) {
+                switch (cx)
+                {
+                case 1:
                 loadpar();
                 printf("\n1. Enter the code Party of candidate   \t:");
                 scanf("%d",&cy); 
@@ -187,15 +190,51 @@ void candidate(){
                 cc++;}
                 else{
                     candidate();}
-                printf("\nCandidate ID = %s %d%d \n\nSuccessful\n------------------\n\n",ap[cy],cy,cc);}//pa tempory                //save in document
-                
-                else if (cx==2){
+                printf("\nCandidate ID = %s %d%d \n\nSuccessful\n------------------\n\n",ap[cy],cy,cc);//pa tempory                //save in document
+                break;
+                case 2:
                     c++;
-                }
-                
+                    break;
+                case 3:
+                    loadcan();
+                    break;
+            }
                 }
                 else {
                 printf("Enter valid number\n");}
                                 
                                 c--;
                           }          }
+void loadcan(){
+    char ch[25];
+    FILE *par;
+    par=fopen("par.txt","r");
+    if(par==NULL){
+        printf("try again");    }
+    else{
+        char ch;
+        
+        printf("\n====party list & candidate====\n\n");
+    while ((ch = fgetc(par)) != EOF) {
+        printf("%c",ch);
+        if (ch=='_')
+        {
+           for (int i = 0; i <=cp; i++)
+           {
+            for (int y = 0; y <=cx; i++)
+            {
+                printf("*%s",ap[i]);
+            }
+            printf("\n");
+           }
+           
+            
+        }
+        
+        
+    }
+fclose(par);
+
+    }
+    
+}
