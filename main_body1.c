@@ -17,6 +17,7 @@ int p=0,px;//temp party zone
 int c=0,cx,cy;//temp candidate zone
 
 char cn[30],pn[25];
+char ap[20][30];
 
 int main(){
 
@@ -178,21 +179,23 @@ void candidate(){
                 if (cx>0 && cx<3) {
                 if (cx==1){
                 loadpar();
-                printf("\n1.Enter the code Party of candidate   \t:");
-                scanf("%d",&cy);                                
+                printf("\n1. Enter the code Party of candidate   \t:");
+                scanf("%d",&cy); 
+                if (cy<=cp && cy>=0){                               
                 printf("\n2. Enter candidate name \t:");
-                scanf("%s",cn);
-
-                cc++;
-                printf("success");
-                //printf("\nCandidate ID = %s %d \n\nSuccessful\n------------------\n\n",ap[cy],ac[cc]);}//pa tempory                //save in document
-                }else if (cx==2){
+                scanf("%s",ap[cy]);
+                cc++;}
+                else{
+                    candidate();}
+                printf("\nCandidate ID = %s %d%d \n\nSuccessful\n------------------\n\n",ap[cy],cy,cc);}//pa tempory                //save in document
+                
+                else if (cx==2){
                     c++;
                 }
-
+                
                 }
                 else {
                 printf("Enter valid number\n");}
-                                }
+                                
                                 c--;
-                            }
+                          }          }
