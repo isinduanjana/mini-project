@@ -7,18 +7,20 @@ void vote();
 
 void notepar();
 void loadpar();
+void listcan();
 void loadcan();
 
 int m=0,m1;
 //int ap[25]={0,1,2,3,4,5,6,7,8,9,10};
-int ac[25]={0,1,2,3,4,5,6,7,8,9,10};
+int ac[25];
 int a,vo,v,r;
-int cc=0,cp=0;//array zone
+int cp=0;//array zone
 int p=0,px;//temp party zone
-int c=0,cx,cy;//temp candidate zone
+int cx,cy;//temp candidate zone
+int lc=0;
 
 char cn[30],pn[25];
-char ap[20][30];
+char ap[20][20][30];
 
 int main(){
 
@@ -115,7 +117,7 @@ while (p<1)   {//need be update
                 if (px>0 && px<3) {
                 if (px==1){
                 notepar();
-                
+                ac[cp]=cp;
                 cp++;
                 }
                 else if (px==2){
@@ -174,6 +176,7 @@ fclose(par);
     }
 }
 void candidate(){
+    int c=0;
                 while (c<1)   {
                 printf("1. Add \n2. Exit \n3. Show list\nSelect ");
                 scanf("%d",&cx);
@@ -181,17 +184,19 @@ void candidate(){
                 switch (cx)
                 {
                 case 1:
-                loadpar();
-                printf("\n1. Enter the code Party of candidate   \t:");
-                scanf("%d",&cy); 
-                if (cy<=cp && cy>=0){                               
-                printf("\n2. Enter candidate name \t:");
-                scanf("%s",ap[cy]);
-                cc++;}
-                else{
-                    candidate();}
-                printf("\nCandidate ID = %s %d%d \n\nSuccessful\n------------------\n\n",ap[cy],cy,cc);//pa tempory                //save in document
-                break;
+                    loadpar();
+                    printf("\n1. Enter the code Party of candidate   \t:");
+                    scanf("%d",&cy); 
+                    
+                    if (cy<=cp && cy>=0){  
+                        listcan();                     
+
+                        }
+                    else{
+                        printf("\ninvalid party code\n");
+                        candidate();}
+                   // printf("\nCandidate ID = %s %d%d \n\nSuccessful\n------------------\n\n",ap[cy],cy,cc);//pa tempory                //save in document
+                    break;
                 case 2:
                     c++;
                     break;
@@ -203,7 +208,7 @@ void candidate(){
                 else {
                 printf("Enter valid number\n");}
                                 
-                                c--;
+                              //  c--;
                           }          }
 void loadcan(){
     char ch[25];
@@ -219,14 +224,10 @@ void loadcan(){
         printf("%c",ch);
         if (ch=='_')
         {
-           for (int i = 0; i <=cp; i++)
-           {
-            for (int y = 0; y <=cx; i++)
+            for (int i = 0; i < cp; i++)
             {
-                printf("*%s",ap[i]);
+            printf("\n%d,",ac[i]);
             }
-            printf("\n");
-           }
            
             
         }
@@ -237,4 +238,29 @@ fclose(par);
 
     }
     
+}
+void listcan(){
+int lx,cc=0;
+    //printf("\n%d,%d",cp,cy);
+for (int x=0;x<=cp;x++){
+    if(ac[x]==cy){
+            while (lc<1)   {
+                printf("1. Add \n2. Save \nSelect ");
+                scanf("%d",&lx);
+                if (lx>0 && lx<3) {
+                switch (lx)
+                {
+                case 1:
+                        printf("\nEnter candidate name :");
+                        scanf("%s",ap[cy][cc]);
+                        break;
+                case 2:
+                        ac[cy]=-1;
+                        lc++;
+                        candidate();
+                      }      }      
+                     }
+}
+}          
+printf("\nYou entered or wrong party code!!!!\n");
 }
